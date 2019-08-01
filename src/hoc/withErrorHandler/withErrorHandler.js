@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Aux from '../Aux'
 import Modal from '../../Components/Ui/Modal/Modal'
 
 // create the special type of hoc component
@@ -40,12 +39,12 @@ const withErrorHandler = (WrappedComponent, axios) => {
 		render (){
 
 			return (
-				<Aux>
+				<React.Fragment>
 					<Modal show={this.state.error} closeModal={this.errorReceivedHandler}>
 						{this.state.error ? this.state.error.message : null }
 					</Modal>
 					<WrappedComponent { ...this.props } />
-				</Aux>
+				</React.Fragment>
 			)
 		}
 	}
