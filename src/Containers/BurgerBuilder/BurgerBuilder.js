@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Aux from '../../hoc/Aux'
 import Burger from '../../Components/Burger/Burger'
 import BuildControls from '../../Components/Burger/BuildControls/BuildControls'
 import Modal from '../../Components/Ui/Modal/Modal'
@@ -144,12 +143,12 @@ class BurgerBuilder extends Component{
          let burger = this.state.error ? <p>The burger couldnt be loaded</p> : <Spinner/>
          if(this.state.ingredients){
             burger =(
-                            <Aux>
+                            <React.Fragment>
                             <Burger ingredients={this.state.ingredients} /> 
                             <BuildControls modalHandle={this.purchaseHandler} price={this.state.totalPrice} addIngredient={this.addIngredientHandler} removeIngredient={this.removeIngredientHandler} disabledInfo={disabledInfo}
                             notPurchasable={this.state.notPurchasable}
                             />
-                            </Aux>
+                            </React.Fragment>
             )
             orderSummary = (<OrderSummary ingredients={this.state.ingredients} 
                                         price={this.state.totalPrice}    
@@ -165,13 +164,13 @@ class BurgerBuilder extends Component{
 
 
         return (
-            <Aux>
+            <React.Fragment>
                 <Modal show={this.state.purchasing} closeModal={this.closeModal}>  
                     {orderSummary}
                 </Modal>
                 {burger}
 
-            </Aux>
+            </React.Fragment>
         )
     }
 }

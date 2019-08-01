@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import styles from './Modal.css'
-import Aux from '../../../hoc/Aux'
 import Backdrop from '../Backdrop/Backdrop'
 
 
@@ -19,12 +18,12 @@ class Modal extends Component{
 			opacity : this.props.show  ? '1' : '0'
 		}
 		return(
-			<Aux>
+			<React.Fragment>
 				<Backdrop show={this.props.show} close={this.props.closeModal}/>
 				<div className={styles.Modal} style={style}>
 				{this.props.children}
 				</div>
-			</Aux>
+			</React.Fragment>
 		)
 	}
 }
